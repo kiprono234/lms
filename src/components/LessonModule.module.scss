@@ -1,0 +1,208 @@
+$primary: #1553b7;
+$primary-light: #e0eaff;
+$card-bg: #fff;
+$shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+.mainContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background: #f7f8fa;
+  min-height: 90vh;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 220px;
+  background: $card-bg;
+  border-radius: 12px;
+  box-shadow: $shadow;
+  padding: 1.5rem 0.5rem;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      color: #333;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s;
+      &:hover {
+        background: $primary-light;
+      }
+    }
+    .active {
+      background: $primary;
+      color: $card-bg;
+      font-weight: 600;
+    }
+  }
+}
+
+.lessonSection {
+  flex: 1.2;
+  min-width: 420px;
+  .breadcrumb {
+    color: #7a7a8c;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  .lessonTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #22223b;
+  }
+  .lessonDescription {
+    color: #444;
+    margin-bottom: 2rem;
+    font-size: 1.08rem;
+  }
+  .editorCard {
+    background: $primary-light;
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: $shadow;
+    margin-bottom: 2rem;
+  }
+  .editorLabel {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: $primary;
+  }
+  .codeEditor {
+    width: 100%;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #c1c7d0;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    background: #20232a;
+    color: #f8f8f2;
+    resize: vertical;
+  }
+  .buttonRow {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  .runBtn, .copyBtn, .resetBtn, .nextBtn {
+    padding: 0.6rem 1.3rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: $shadow;
+  }
+  .runBtn {
+    background: $primary;
+    color: $card-bg;
+    &:hover { background: darken($primary, 7%); }
+  }
+  .copyBtn {
+    background: #fff;
+    color: $primary;
+    border: 1px solid $primary-light;
+    &:hover { background: $primary-light; }
+  }
+  .resetBtn {
+    background: #f5f5f5;
+    color: #222;
+    border: 1px solid #e0eaff;
+    &:hover { background: #e0eaff; }
+  }
+  .nextBtn {
+    background: $primary;
+    color: #fff;
+    &:hover { background: darken($primary, 7%); }
+    &:disabled { background: #bfcddc; color: #fff; cursor: not-allowed; }
+  }
+}
+
+.quizSection {
+  width: 260px;
+  min-width: 220px;
+  .quizCard {
+    background: $card-bg;
+    box-shadow: $shadow;
+    border-radius: 12px;
+    padding: 1.5rem;
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 0.7rem;
+      color: #444;
+    }
+    .codeBlock {
+      background: #20232a;
+      color: #f8f8f2;
+      border-radius: 8px;
+      padding: 0.8rem;
+      margin-bottom: 1.2rem;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-size: 1rem;
+      overflow-x: auto;
+    }
+    .quizOptions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      label {
+        font-size: 1rem;
+        color: #22223b;
+        cursor: pointer;
+        input {
+          margin-right: 0.6rem;
+        }
+        &.correct {
+          background: #d6ffe4;
+        }
+        &.wrong {
+          background: #ffe4e4;
+        }
+      }
+    }
+    .quizInputForm {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .quizInput {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+    .submitBtn {
+      padding: 0.5rem 1rem;
+      background: $primary;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      &:hover {
+        background: darken($primary, 7%);
+      }
+    }
+    .quizResult {
+      margin-top: 0.7rem;
+      background: #e0eaff;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 1.08rem;
+    }
+  }
+}
