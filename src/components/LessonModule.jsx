@@ -244,7 +244,7 @@ export default function LessonModule() {
               type="text"
               value={userQuizInput}
               onChange={e => setUserQuizInput(e.target.value)}
-              placeholder="e.g. print(2 + 3 * 4)"
+              placeholder=""
               className={styles.quizInput}
             />
             <button type="submit" className={styles.submitBtn}>Submit</button>
