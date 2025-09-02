@@ -86,44 +86,29 @@ const sidebarItems = [
 ];
 
 export default function LessonModule() {
-  // Start at index 0 for the first lesson
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // UseEffect to reset code when lesson changes
   const [code, setCode] = useState(lessons[activeIndex]?.code ?? "");
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [userQuizInput, setUserQuizInput] = useState('');
+  const [userQuizAnswer, setUserQuizAnswer] = useState('');
+
   useEffect(() => {
     setCode(lessons[activeIndex]?.code ?? "");
   }, [activeIndex]);
 
-  // Reset code to lesson's original code
-  const handleReset = () => {
-    setCode(lessons[activeIndex]?.code ?? "");
-  };
-
-  // Quiz selection
-  const [selectedQuiz, setSelectedQuiz] = useState(null);
-
-  // Change lesson and reset quiz selection
+  const handleReset = () => setCode(lessons[activeIndex]?.code ?? "");
   const selectLesson = (idx) => {
     if (idx >= 0 && idx < lessons.length) {
       setActiveIndex(idx);
       setSelectedQuiz(null);
     }
   };
-
-  // Next button
   const handleNext = () => {
-    if (activeIndex < lessons.length - 1) {
-      selectLesson(activeIndex + 1);
-    }
+    if (activeIndex < lessons.length - 1) selectLesson(activeIndex + 1);
   };
-
-  // Run code (simulated)
   const handleRun = () => {
     alert("Running code...\n\n" + code);
   };
-
-  // Copy code
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
@@ -132,17 +117,10 @@ export default function LessonModule() {
       alert("Copy failed.");
     }
   };
-
-  // Quiz select
   const handleQuizSelect = idx => setSelectedQuiz(idx);
 
-  // User-generated quiz
-  const [userQuizInput, setUserQuizInput] = useState('');
-  const [userQuizAnswer, setUserQuizAnswer] = useState('');
-
   function getPythonOutput(code) {
-    // Only supports simple print(<math>) expressions.
-    const match = code.match(/print\(([\d\s\+\-\*\/\(\)\.%]+)\)/);
+    const match = code.match(/print\(([\d\s+\-*/().%]+)\)/);
     if (match) {
       try {
         // eslint-disable-next-line no-eval
@@ -161,7 +139,6 @@ export default function LessonModule() {
     setUserQuizAnswer(answer);
   };
 
-  // Defensive: If activeIndex is out of bounds, render nothing
   if (!lessons[activeIndex]) {
     return <div>Lesson not found.</div>;
   }
